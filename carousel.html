@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1">&lt;title&gt;Carousel Image Display&lt;/title&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.carousel {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 20px 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.carousel-inner {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow-x: auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>scroll-snap-type: x mandatory;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>-webkit-overflow-scrolling: touch;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding-bottom: 80px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding-top: 70px; /* Add upper padding */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.card-wrapper {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex: 0 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-right: 20px; /* Adjust spacing between cards */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: transform 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 250px; /* Adjusted size for cards */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 350px; /* Adjusted height for cards */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: transform 0.3s ease, z-index 0.3s ease, box-shadow 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative; /* Ensure z-index works properly */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background-color: white; /* Add background color to hide cut-out */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.card img {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>object-fit: cover;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: filter 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>filter: grayscale(100%); /* Apply grayscale effect to images */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.card-wrapper:hover .card {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform: scale(1.1) translate(0.5%, 2%); /* Enlarge and overlap hovered card */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Add shadow effect */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>z-index: 1; /* Ensure hovered card is above others */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.card-wrapper:hover .card img {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>filter: grayscale(0%); /* Remove grayscale effect on hover */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.card-wrapper:hover:not(:hover) .card {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform: scale(0.9); /* Scale down nearby cards */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="carousel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="carousel-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-wrapper"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;img src="https://static.wixstatic.com/media/b335fc_d2967a5aae944a859631164222357926~mv2.png" alt="Image 1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-wrapper"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;img src="https://static.wixstatic.com/media/b335fc_9993b2c9999c4c09a87a952e6cdb16e6~mv2.png/v1/fill/w_1122,h_1332,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/b335fc_9993b2c9999c4c09a87a952e6cdb16e6~mv2.png" alt="Image 2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-wrapper"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;img src="https://static.wixstatic.com/media/b335fc_b16321d14f814e4880739fe3166ff5fe~mv2.png" alt="Image 3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-wrapper"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;img src="https://static.wixstatic.com/media/b335fc_3a7c0cef8189414f9c3dacd7720388ca~mv2.png" alt="Image 4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card-wrapper"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;img src="https://static.wixstatic.com/media/b335fc_64fae56d64594e46ae3d52c244b1b0d2~mv2.png" alt="Image 5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const cards = document.querySelectorAll('.card');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function randomHover() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const randomIndex = Math.floor(Math.random() * cards.length);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cards[randomIndex].classList.add('hovered');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cards[randomIndex].classList.remove('hovered');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}, 2000); // Change hover duration as needed (in milliseconds)</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Initial random hover</p>
+<p class="p1"><span class="Apple-converted-space">  </span>randomHover();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Automatic random hover every 5 seconds</p>
+<p class="p1"><span class="Apple-converted-space">  </span>setInterval(randomHover, 5000); // Change interval duration as needed (in milliseconds)</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
